@@ -1,35 +1,37 @@
 package exercises.exercise2;
 
-import java.time.Clock;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 
 public class TimeTest {
 
-	public static void main(String[] args) {
-		String test = "(22052014,44.756364,20.412598,051230,051230,123143124122)";
-		//tick(10, 100);
-		LocalDate dateTime = LocalDate.of(2014, 5, 22);
-		System.out.println(dateTime);
-		
+	public static void main(String[] args) throws InterruptedException {
+		LocalDate bDay = LocalDate.of(1986, 8, 20);
+		System.out.println(bDay);
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM uuuu");
-		String temp =	dateTime.format(formatter);
-		System.out.println("temp: " + temp);
-		
-		LocalDate parsed = LocalDate.parse(temp, formatter);
-		
+		String formatedTime = bDay.format(formatter);
+		System.out.println("formatedTime: " + formatedTime);
+
+		LocalDate parsed = LocalDate.parse(formatedTime, formatter);
+
 		System.out.println("parsed: " + parsed);
+
+		Period period = Period.between(bDay, LocalDate.now());
+		System.out
+				.println("years: " + period.getYears() + "; months: " + period.getMonths() + "; days: " + period.getDays());
 		
-		String datetest = "22052014";
-		System.out.println(datetest.substring(0, 2));
-	
-		
-		int day = Integer.valueOf(datetest.substring(0, 2));
-		
-		System.out.println(day);
+		System.out.println("\n\t Ticking methods:\n");
+		Thread.sleep(1500);
+		tick(3, 300);
+		Thread.sleep(1500);
+		tickWithFps(5, 30);
+
 //		LocalDate present = LocalDate.now();
 //		LocalDate present2 = LocalDate.now(Clock.systemDefaultZone());
 //		LocalDateTime dateTime = LocalDateTime.now();
@@ -78,6 +80,7 @@ public class TimeTest {
 	}
 
 	private static void tick(int lengthInSec, int intervalInMs) {
+		System.out.println("For " + lengthInSec + " seconds, ticking every " + intervalInMs + " ms:\n");
 		LocalTime time = LocalTime.now();
 		long length = lengthInSec * 1000;
 		long starttime = time.getLong(ChronoField.MILLI_OF_DAY);
@@ -92,6 +95,37 @@ public class TimeTest {
 				step = currentTime;
 			}
 		}
+		System.out.println("\nIn " + lengthInSec + " seconds, there were " + count + " ticks of " + intervalInMs + "ms.\n");
 	}
 
+	private static void tickWithFps(int forSecs, int targetFps) {
+		System.out.println("For " + forSecs + " seconds, ticking at " + targetFps + " fps:\n");
+		long oneSec = 1_000_000_000L;
+		double nanoFpsRate = 1_000_000_000 / targetFps;
+		int secsPast = 0;
+		int totalTicks = 0;
+		int fps = 0;
+		Instant start = Instant.now();
+		Instant secStart = Instant.now();
+		Instant end;
+
+		while (secsPast < forSecs) {
+			end = Instant.now();
+
+			if (start.until(end, ChronoUnit.NANOS) >= nanoFpsRate) {
+				fps++;
+				totalTicks++;
+				start = Instant.now();
+			}
+			if (secStart.until(end, ChronoUnit.NANOS) >= oneSec) {
+				secsPast += 1;
+				System.out.println("Second: " + secsPast + ", ticking at: " + fps + " fps ...");
+				fps = 0;
+				secStart = Instant.now();
+			}
+		}
+
+		System.out.println("\nIn " + (secsPast) + " seconds, there were " + totalTicks + " ticks at an average of "
+				+ totalTicks / (secsPast) + " fps.");
+	}
 }
