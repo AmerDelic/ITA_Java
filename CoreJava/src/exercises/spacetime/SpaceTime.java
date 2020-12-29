@@ -1,6 +1,12 @@
-package exercises.exercise6;
+package exercises.spacetime;
 
 import java.time.LocalDateTime;
+
+// Exercise: create a class to represent a user's position in space and time.
+// Create a method which accepts a string and extracts the values of dateTime, latitude, longitude, and name.
+// Input string format: (22052014,44.756364,20.412598,051230,123143124122)
+// or, if the date and time parts switch position, there is an additional 'H', like so:
+// (051230,44.756364,20.412598,22052014,123143124122,H).
 
 public class SpaceTime {
 	private LocalDateTime dateTime;

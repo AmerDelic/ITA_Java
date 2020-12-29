@@ -1,4 +1,4 @@
-package exercises.exercise5;
+package exercises.userposition;
 
 public class UserPoint {
 	private double x;

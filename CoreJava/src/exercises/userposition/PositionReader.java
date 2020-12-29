@@ -1,7 +1,15 @@
-package exercises.exercise5;
+package exercises.userposition;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
+// Exercise: Create three classes: 
+// 1) A UserPoint class which will have the x and y coordinates as int fields.
+// 2) A UserPosition class whose constructor takes an UserPoint object and an int userId.
+// 3) A class to hold methods which parse a string of the following format: 
+// 	"[{id:10,x:10,y:20d},{id:5,x:30,y:40d},{id:2,x:2,y:7d}]"
+// 	and return a list of UserPosition objects. 
 
 public class PositionReader {
 	

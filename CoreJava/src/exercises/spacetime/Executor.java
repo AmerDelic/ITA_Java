@@ -1,4 +1,4 @@
-package exercises.exercise6;
+package exercises.spacetime;
 
 public class Executor {
 	public static void main(String[] args) {

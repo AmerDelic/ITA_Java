@@ -1,4 +1,4 @@
-package exercises.exercise1;
+package exercises.textparsing;
 
 import javax.swing.JOptionPane;
 

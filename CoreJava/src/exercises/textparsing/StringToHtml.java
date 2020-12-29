@@ -1,4 +1,4 @@
-package exercises.exercise3;
+package exercises.textparsing;
 
 public class StringToHtml {
 

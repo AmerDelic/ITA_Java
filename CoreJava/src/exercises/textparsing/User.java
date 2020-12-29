@@ -1,4 +1,4 @@
-package exercises.exercise4;
+package exercises.textparsing;
 
 public class User {
 	private String id;
