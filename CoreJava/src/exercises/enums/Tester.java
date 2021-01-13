@@ -3,8 +3,13 @@ package exercises.enums;
 import java.util.EnumSet;
 
 public class Tester {
+	
+	
+	private static int floatId = (int)Math.random();
+	
 
 	public static void main(String[] args) {
+		
 		order("Wait");
 		
 		System.out.println("All enum values:\n");
@@ -21,6 +26,11 @@ public class Tester {
 		System.out.println("\nEnum with constructor and fields:\n");
 		for(State t : State.values()) {
 			System.out.println(t.stateId + ", " + t.desc);
+		}
+		
+		System.out.println("\n\t Game Modes:\n");
+		for(GameMode gm : GameMode.values()) {
+			System.out.println(gm.name + " -- " + gm.desc + " Id: " + gm.id);
 		}
 	}
 
