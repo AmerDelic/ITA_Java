@@ -1,16 +1,15 @@
 package exercises.streams;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.MatchResult;
 
-/* You are given a file users.txt, with the following content:
+/* Exercise 1:
+ * 
+ * You are given a file users.txt, with the following content:
  * 
 	id:01|firstName:Petar|lastName:Petrovic|jmbg:1234567890123
 	id:02|firstName:Jovan|lastName:Jovanovic|jmbg:1234567890124
