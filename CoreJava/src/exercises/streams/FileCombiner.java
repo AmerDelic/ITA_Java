@@ -3,12 +3,10 @@ package exercises.streams;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 /* Exercise 2:
  * 
@@ -34,9 +32,9 @@ public class FileCombiner {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		try(BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(first)));
-				BufferedReader br2 = new BufferedReader(new InputStreamReader(new FileInputStream(second)));
-				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newFile)))) {
+		try(BufferedReader br1 = new BufferedReader(new FileReader(first));
+				BufferedReader br2 = new BufferedReader(new FileReader(second));
+				BufferedWriter bw = new BufferedWriter(new FileWriter(newFile))) {
 			String line = null;
 			while((line = br1.readLine()) != null) {
 				bw.write(line + "\n");
