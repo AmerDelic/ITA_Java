@@ -19,12 +19,12 @@ public class Tester {
 //		File thirdFile = combiner.merge();
 
 		// Exercise 3:
-		WebCrawler crawler = new WebCrawler("https://www.klix.ba/");
-		List<String> pagesList = crawler.crawl();
-		pagesList.stream().forEach(System.out::println);
+//		WebCrawler crawler = new WebCrawler("https://www.klix.ba/");
+//		List<String> pagesList = crawler.crawl();
+//		pagesList.stream().forEach(System.out::println);
 	
 		// Exercise 4:
-		Transaction transaction = new Transaction(1, 2, 100.00);
+		Transaction transaction = new Transaction(1, 2, 50.00);
 		transaction.transfer();
 	}
 }
