@@ -11,7 +11,7 @@ import java.util.List;
 /* Exercise 3:
  * 
  * Write a web crawler which takes a Url string, parses the web site for links
- * and stores all links in a List.
+ * and returns all links in a List.
  * 
  *  */
 
@@ -21,14 +21,12 @@ public class WebCrawler {
 	public WebCrawler(String startUrl) {
 		this.startUrl = startUrl;
 	}
-	
-	public List<String> crawl() {
-		String url = startUrl;
-		List<String> initialList = parse(url);
-		
-			return initialList;
+
+	public List<String> getAllLinks() {
+		List<String> initialList = parse(startUrl);
+		return initialList;
 	}
-	
+
 	private String retrievePage(String url) {
 		URL page = null;
 		try {
@@ -36,11 +34,11 @@ public class WebCrawler {
 		} catch (MalformedURLException e) {
 			e.getMessage();
 		}
-		
-		try (BufferedReader in = new BufferedReader(new InputStreamReader(page.openStream()))){
+
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(page.openStream()))) {
 			StringBuffer sbfr = new StringBuffer();
 			String line = null;
-			while((line = in.readLine()) != null) {
+			while ((line = in.readLine()) != null) {
 				sbfr.append(line + "\n");
 			}
 			return sbfr.toString();
@@ -49,47 +47,31 @@ public class WebCrawler {
 			return null;
 		}
 	}
-	
+
 	private String parseHlink(String page, int pos) {
 		StringBuilder sb = new StringBuilder();
-		pos+=6;
+		pos += 6;
 		char c;
-		while((c = page.charAt(pos++)) != '"') {
+		while ((c = page.charAt(pos++)) != '"') {
 			sb.append(c);
 		}
 		return sb.toString();
 	}
-	
+
 	private List<String> parse(String url) {
 		List<String> pages = new ArrayList<String>();
 		String page = retrievePage(url);
-		int lastPos = page.length()-1;
-		while(lastPos != -1) {
-			lastPos = page.lastIndexOf("href", lastPos-1);
-			if(lastPos == -1) break;
+		int lastPos = page.length() - 1;
+		while (lastPos != -1) {
+			lastPos = page.lastIndexOf("href", lastPos - 1);
+			if (lastPos == -1)
+				break;
 			String link = parseHlink(page, lastPos);
-			if(!(link.contains("http"))) continue;
+			if (!(link.contains("http")))
+				continue;
 			pages.add(link);
 		}
 		return pages;
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

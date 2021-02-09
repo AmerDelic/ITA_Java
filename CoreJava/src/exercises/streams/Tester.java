@@ -6,9 +6,9 @@ import java.util.List;
 public class Tester {
 
 	public static void main(String[] args) {
-		
+
 		// Exercise 1:
-//		UserData ud = new UserData("user");	
+//		UserData ud = new UserData("user");	// the "user" string passed here is the local source file name
 //		List<User> users = ud.getUsers();
 //		for(User u : users) {
 //			System.out.println(u.toString() + "\n----------------------");
@@ -19,12 +19,12 @@ public class Tester {
 //		File thirdFile = combiner.merge();
 
 		// Exercise 3:
-//		WebCrawler crawler = new WebCrawler("https://www.klix.ba/");
-//		List<String> pagesList = crawler.crawl();
-//		pagesList.stream().forEach(System.out::println);
-	
+		WebCrawler crawler = new WebCrawler("https://www.klix.ba/");
+		List<String> pagesList = crawler.getAllLinks();
+		pagesList.stream().forEach(System.out::println);
+
 		// Exercise 4:
-		Transaction transaction = new Transaction(1, 2, 50.00);
-		transaction.transfer();
+//		Transaction transaction = new Transaction(1, 2, 50.00);
+//		transaction.transfer();
 	}
 }
