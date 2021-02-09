@@ -4,11 +4,9 @@ import java.util.EnumSet;
 
 public class Tester {
 	
-	
-	private static int floatId = (int)Math.random();
-	
-
 	public static void main(String[] args) {
+		
+		
 		
 		order("Wait");
 		
@@ -28,10 +26,15 @@ public class Tester {
 			System.out.println(t.stateId + ", " + t.desc);
 		}
 		
-		System.out.println("\n\t Game Modes:\n");
+		System.out.println("\n\t All game modes:\n");
 		for(GameMode gm : GameMode.values()) {
-			System.out.println(gm.name + " -- " + gm.desc + " Id: " + gm.id);
+			System.out.println(gm.getName() + " -- " + gm.getDesc());
 		}
+		
+		System.out.println("\n\t Randomly chosen game mode:\n");
+		GameMode randomMode = GameMode.RandomBattle;
+		System.out.println("Game mode chosen: " + randomMode.getName() + "\n"
+				+ "Description: " + randomMode.getDesc());
 	}
 
 	public static void order(String order) {
@@ -61,5 +64,4 @@ public class Tester {
 			break;
 		}
 	}
-
 }

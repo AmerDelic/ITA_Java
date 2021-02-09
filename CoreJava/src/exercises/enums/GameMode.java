@@ -3,23 +3,47 @@ package exercises.enums;
 // Exercise: create an enum representing a list of available game modes;
 
 public enum GameMode {
-	RandomBattle((int) (Math.random() * (5 - 2 + 1)) + 2, "Random Battle",
-			"Randomly selects any of the six available battle modes"),
-	TeamBattle(2, "Team Battle", "Work together with you team to achive absolute victory!"),
-	TankCompany(3, "Tank Company", "Join the fight as part of a tank company"),
-	Strongholds(4, "Strongholds", "Conquer the enemy team's stronghold while defending your own"),
-	Special(5, "Special Battle", "Customize a battle to your liking"),
-	TeamTraining(6, "Team Training", "Practice team coordination"),
-	BattleTraining(7, "Battle Training", "Sharpen your combat skills in this combat-focused training mode");
+	RandomBattle((int) (Math.random() * (6 - 1 + 1) + 1)), TeamBattle(1), TankCompany(2), Strongholds(3), Special(4),
+	TeamTraining(5), BattleTraining(6);
 
-	public int id;
-	public String name;
-	public String desc;
+	private String name;
+	private String desc;
 
-	private GameMode(int id, String name, String desc) {
-		this.id = id;
-		this.name = name;
-		this.desc = desc;
+	private GameMode(int id) {
+		switch (id) {
+		case 1:
+			this.desc = "Work together with you team to achive absolute victory!";
+			this.name = "Team Battle";
+			break;
+		case 2:
+			this.desc = "Join the fight as part of a tank company";
+			this.name = "Tank Company";
+			break;
+		case 3:
+			this.desc = "Conquer the enemy team's stronghold while defending your own";
+			this.name = "Strongholds";
+			break;
+		case 4:
+			this.desc = "Customize a battle to your liking";
+			this.name = "Special Battle";
+			break;
+		case 5:
+			this.desc = "Practice team coordination";
+			this.name = "Team Training";
+			break;
+		case 6:
+			this.desc = "Sharpen your combat skills in this combat-focused training mode";
+			this.name = "Battle Training";
+			break;
+		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDesc() {
+		return desc;
 	}
 
 }
