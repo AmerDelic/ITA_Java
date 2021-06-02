@@ -92,8 +92,8 @@ public class Board {
 	public void pcShoot() {
 		Ship target = null;
 		boolean isHit = false;
-		int x = (int) ((Math.random() * (10 - 1 + 1)) + 1);
-		int y = (int) ((Math.random() * (10 - 7 + 1)) + 7);
+		int x = (int) ((Math.random() * 10) + 1);
+		int y = (int) ((Math.random() * 5) + 7);
 		List<Ship> ships = p1.getShips();
 		if (ships.isEmpty()) {
 			gameover = true;

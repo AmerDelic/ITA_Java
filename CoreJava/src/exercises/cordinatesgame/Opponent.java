@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Opponent extends Player {
-	
-	
+
 	public Opponent() {
 		super("Pc");
 	}
@@ -17,8 +16,8 @@ public class Opponent extends Player {
 		List<Ship> ships = new ArrayList<Ship>();
 		int n = 0;
 		a: while (n < 4) {
-			x = (int) ((Math.random() * (10 - 1 + 1)) + 1);
-			y = (int) ((Math.random() * (5 - 1 + 1)) + 1);
+			x = (int) ((Math.random() * 10) + 1);
+			y = (int) ((Math.random() * 5) + 1);
 			Ship temp = new Ship(x, y);
 			for (Ship s : ships) {
 				if (s.equals(temp)) {
@@ -40,4 +39,3 @@ public class Opponent extends Player {
 		return "Opponent [name=" + name + "]";
 	}
 }
-
